@@ -1,60 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <meta charset="utf-8">
-    <title>Mashape Query</title>
-    <script>
-    var card;
-    var answer;
-  
-	function doIt() { 
-        var output = $.ajax({
-            url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
-            type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-            data: {}, // Additional parameters here
-            dataType: 'json',
-            success: function(data) {
-                //Change data.source to data.something , where something is whichever part of the object you want returned.
-                //To see the whole object you can output it to your browser console using:
-                //console.log(data["Basic"][30]["img"]);
-                //document.getElementById("output").innerHTML = data.source; 
-                //document.getElementById('cardImg').src = data["Basic"][30]["img"]
-                card = data["Basic"][80]
-            },
-            error: function(err) { alert(err); },
-            beforeSend: function(xhr) {
-                   xhr.setRequestHeader("X-Mashape-Authorization", "IjNphtvZLlmshWPI4BEINzRjovSjp1rzBk0jsnjEcXcBkxjbuv"); // Enter here your Mashape key
-            }
-    });
-
-}
-
-    function changeImage() {
-        var image = document.getElementById('cardImg');
-        image.src = card["img"];
-    }
+    <title>Hearthstone Card Quiz</title>
     
-    function check() {
-        var x, text;
-        x = document.getElementById("quiz").value;
-        if ( x == card.cost){
-            text = "correct";
-        } else {
-            text = "wrong";
-        }
-        document.getElementById("demo").innerHTML = text;
-    }
-
-</script>
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="quiz.js"></script>
+    <script>
+        getData();
+    </script>
 </head>
 <body>
-
-  <button onclick="doIt()">Run the request</button>
-  <button onclick="changeImage()">changeImage</button>
-  <div id="output">The API request is:</div>
+  <div id="output">test output</div>
+  <button onclick="getData()">get data</button>
+  <button onclick="refreshCard()">refresh card</button>
+  <div id="test">test div:</div>
   <img id="cardImg" src="http://media-hearth.cursecdn.com/avatars/252/414/22342.png">
-  <input id="quiz" type="number">
+  <input id="input" type="number">
   <button onclick="check()">check</button>
   <p id="demo"></p>
 </body>
