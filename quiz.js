@@ -29,7 +29,7 @@ var cards;
 
     function getCard(data) {
     	var cardNr;
-    	x =  Math.floor(Math.random() * (80 - 10 + 1) + 10);
+    	x =  Math.floor(Math.random() * (120 - 50 + 1) + 50);
         return data["Basic"][x];
     }
     
@@ -37,22 +37,29 @@ var cards;
         //var data = document.getElementById("output").innerHTML;
         console.log(cards);
         var card = getCard(cards);
+        randomCard = card;
+        var context = document.getElementById('cardCanvas').getContext("2d");
         var image = document.getElementById('cardImg');
         image.src = card["img"];
+        image.style.visibility = 'hidden';
+        image.onload = function () {
+            context.drawImage(image, 0, 0);
+            context.fillRect(15,60,75,75);
+        };
     }
 
-    function changeImage() {
-        var image = document.getElementById('cardImg');
-        image.src = card["img"];
-    }
-    
     function check() {
         var x, text;
         x = document.getElementById("input").value;
-        if ( x == card.cost){
+        console.log(x);
+        console.log(randomCard.cost);
+        if ( x == randomCard.cost){
             text = "correct";
+            refreshCard();
         } else {
             text = "wrong";
         }
-        document.getElementById("demo").innerHTML = text;
+        document.getElementById("test").innerHTML = text;
     }
+    
+    

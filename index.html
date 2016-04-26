@@ -5,7 +5,9 @@
     <title>Hearthstone Card Quiz</title>
     
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <!--<script src="https://raw.githubusercontent.com/wout/svg.js/master/dist/svg.js"></script>-->
     <script src="quiz.js"></script>
+    
     <script>
         getData();
     </script>
@@ -16,6 +18,7 @@
   <button onclick="refreshCard()">refresh card</button>
   <div id="test">test div:</div>
   <img id="cardImg" src="http://media-hearth.cursecdn.com/avatars/252/414/22342.png">
+  <canvas id="cardCanvas" width="307" height="465">></canvas>
   <input id="input" type="number">
   <button onclick="check()">check</button>
   <p id="demo"></p>
