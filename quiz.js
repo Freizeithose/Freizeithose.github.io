@@ -28,7 +28,9 @@ var cards;
     }
 
     function getCard(data) {
-        return data["Basic"][80]
+    	var cardNr;
+    	x =  Math.floor(Math.random() * (80 - 10 + 1) + 10);
+        return data["Basic"][x];
     }
     
     function refreshCard() {
